@@ -197,20 +197,11 @@ def automate():
 
     # fill in username and hit the next button
 
-    username = browser.find_element_by_id('identifierId')
-    username.send_keys(val1)
-
-    nextButton = browser.find_element_by_id('identifierNext')
-    nextButton.click()
-
-    # wait for transition then continue to fill items
-
-    password = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.NAME, "password")))
-
-    password.send_keys(val2)
-
-    signInButton = browser.find_element_by_id('passwordNext')
-    signInButton.click()
+    username = driver.find_element_by_xpath('//*[@id="identifierId"]').send_keys(userid)
+    nextbtn = driver.find_element_by_xpath('//*[@id="identifierNext"]').click()
+    sleep(5)
+    password = driver.find_element_by_name("password").send_keys(passid)
+    nextbtn2 = self.driver.find_element_by_xpath('//*[@id="passwordNext"]').click()
 
 def clearfile():
     f = open('data.txt', "w")
